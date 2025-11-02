@@ -45,68 +45,93 @@ Within a dynamind, you can manage multiple **focus areas** (research, platforms,
 
 ## Quick Start
 
-### 1. Clone or Download This Repository
+### 1. Create Your Dynamind Directory
 
 ```bash
-# Clone to your local machine
-git clone https://github.com/neilsone/dynamind.git
-cd dynamind
-
-# Or download and extract the ZIP file
+# Create a directory for your dynamind
+# Use the pattern: [scope]-dynamind
+mkdir platform-dynamind
+cd platform-dynamind
+git init
 ```
 
-### 2. Open in VSCode with Cline
+**Naming examples for different scales:**
+- `platform-dynamind` — Software platform documentation
+- `research-dynamind` — Research program or lab
+- `personal-dynamind` — Individual knowledge management
+- `learning-dynamind` — Educational pursuits
+- `org-dynamind` — Organizational knowledge base
+
+### 2. Add Dynamind Scaffolding
 
 ```bash
-# Open this directory in VSCode
+# Clone dynamind into .clinerules directory
+git clone https://github.com/neilsone/dynamind.git .clinerules/dynamind
+
+# Prevent accidentally committing dynamind's git history
+echo ".clinerules/dynamind/.git/" >> .gitignore
+```
+
+**Advanced: Using Git Submodule (Optional)**
+
+For teams or when tracking the dynamind version is important:
+
+```bash
+# Use submodule instead of simple clone
+git submodule add https://github.com/neilsone/dynamind.git .clinerules/dynamind
+```
+
+Benefits: Track exact dynamind version, team gets same scaffolding automatically.
+
+### 3. Open in VSCode with Cline
+
+```bash
 code .
 ```
 
 Make sure the Cline extension is installed and activated (look for the Cline icon in the sidebar).
 
-### 3. Initialize Your Memory Bank
+### 4. Initialize Memory Bank
 
-In Cline's chat interface, simply say:
+In Cline's chat interface, say:
 
 ```
 Initialize the dynamind memory bank for [your domain]
 ```
 
-**Examples:**
-- "Initialize the dynamind memory bank for my web development projects"
-- "Initialize the dynamind memory bank for my machine learning research"
-- "Initialize the dynamind memory bank for learning Spanish"
+**Examples for different scales:**
+- "Initialize the dynamind memory bank for the billing platform"
+- "Initialize the dynamind memory bank for neuroscience research"
+- "Initialize the dynamind memory bank for learning rust"
+- "Initialize the dynamind memory bank for community programs"
 
-**What Happens:**
-Cline will create:
-- `memory-bank/` directory with 6 core documentation files
-- `memory-bank/focus-index.md` to track all your focuses
-- Initial structure customized to your domain
+**What Cline Creates:**
+- `memory-bank/` with 6 core documentation files
+- `memory-bank/focus-index.md` to track focuses
+- Initial structure adapted to your domain
 
-### 4. Create Your First Focus
+### 5. Create Your First Focus
 
 ```
 Create a focus called [topic] in the [area] focus area
 ```
 
 **Examples:**
-- "Create a focus called react-components in the frontend focus area"
-- "Create a focus called transformer-models in the research focus area"
-- "Create a focus called grammar in the learning focus area"
+- "Create a focus called payment-service in the services focus area"
+- "Create a focus called fmri-analysis in the methods focus area"
+- "Create a focus called ownership-concepts in the fundamentals focus area"
 
-**What Happens:**
-Cline will:
-- Validate naming conventions (lowercase, hyphens, underscores only)
-- Create `focus-areas/[area]/focus-sections/[topic]/OVERVIEW.md`
-- Add TODOs for you to fill in specific details
-- Update the focus index
-- Optionally create additional context files
+**What Cline Does:**
+- Validates naming (lowercase, hyphens, underscores only)
+- Creates `focus-areas/[area]/focus-sections/[topic]/OVERVIEW.md`
+- Adds TODOs for customization
+- Updates the focus index
 
-### 5. Start Working!
+### 6. Start Working
 
 Now you can:
-- Ask Cline to open any focus: `"Open the react-components focus"`
-- Update context: `"Update context for react-components"`
+- Open focuses: `"Open the payment-service focus"`
+- Update context: `"Update context for payment-service"`
 - List everything: `"List all focuses"`
 - Navigate naturally: Cline reads your memory bank automatically
 
@@ -114,43 +139,85 @@ Now you can:
 
 ## Example Workflows
 
-### Software Engineer Managing a Side Project
+### Individual: Managing Programming Projects
 
-```
-1. "Initialize the dynamind memory bank for my task manager app"
-2. "Create a focus called backend-api in the development focus area"
-3. "Create a focus called frontend-ui in the development focus area"
-4. "Open the backend-api focus"
-   [Work on backend, then...]
-5. "Update memory bank" 
-   [Cline updates all context with your progress]
-6. "Switch to the frontend-ui focus"
-   [Continue with full context maintained]
+```bash
+mkdir personal-dynamind
+cd personal-dynamind
+git init
+git clone https://github.com/neilsone/dynamind.git .clinerules/dynamind
+code .
 ```
 
-### Researcher Organizing Literature
-
 ```
-1. "Initialize the dynamind memory bank for my PhD research on climate models"
-2. "Create a focus called data-analysis in the methodology focus area"
-3. "Create a focus called literature-review in the research focus area"
-4. "What's the status of literature-review?"
-   [Check current state]
-5. "Update context for literature-review with recent papers"
-6. "Create dependency matrix for methodology"
-   [Track relationships between methods]
+1. "Initialize the dynamind memory bank"
+2. "Create a focus called task-manager in the side-projects focus area"
+3. "Create a focus called rust-learning in the learning focus area"
+4. "Create a focus called blog-posts in the writing focus area"
+5. "Open the task-manager focus"
+   [Work across multiple domains from one knowledge hub]
+6. "Update memory bank"
+   [Capture progress across all focuses]
 ```
 
-### Learning a New Skill
+### Team: Documenting a Microservices Platform
+
+```bash
+mkdir billing-platform-dynamind
+cd billing-platform-dynamind
+git init
+git submodule add https://github.com/neilsone/dynamind.git .clinerules/dynamind
+code .
+```
 
 ```
-1. "Initialize the dynamind memory bank for learning piano"
-2. "Create a focus called music-theory in the fundamentals focus area"
-3. "Create a focus called practice-pieces in the repertoire focus area"
-4. "List all focuses"
-   [See your learning structure]
+1. "Initialize the dynamind memory bank for the billing platform"
+2. "Create a focus called payment-service in the services focus area"
+3. "Create a focus called api-gateway in the infrastructure focus area"
+4. "Create a focus called pci-compliance in the compliance focus area"
+5. "Create dependency matrix for services"
+   [Track service relationships]
+6. "What's the status of pci-compliance?"
+   [Check compliance progress]
+```
+
+### Organization: Research Lab Coordination
+
+```bash
+mkdir neuroscience-research-dynamind
+cd neuroscience-research-dynamind
+git init
+git clone https://github.com/neilsone/dynamind.git .clinerules/dynamind
+code .
+```
+
+```
+1. "Initialize the dynamind memory bank for neuroscience research lab"
+2. "Create a focus called fmri-study in the active-projects focus area"
+3. "Create a focus called grant-applications in the administrative focus area"
+4. "Create a focus called lab-equipment in the resources focus area"
+5. "Update context for fmri-study with latest results"
+6. "List all focuses"
+   [See entire lab organization]
+```
+
+### Hobbyist: Learning Journey
+
+```bash
+mkdir learning-dynamind
+cd learning-dynamind
+git init
+git clone https://github.com/neilsone/dynamind.git .clinerules/dynamind
+code .
+```
+
+```
+1. "Initialize the dynamind memory bank for learning adventures"
+2. "Create a focus called spanish-grammar in the languages focus area"
+3. "Create a focus called piano-pieces in the music focus area"
+4. "Create a focus called woodworking in the crafts focus area"
 5. "Update memory bank"
-   [Capture progress and insights]
+   [Track progress across different interests]
 ```
 
 ---
@@ -411,26 +478,48 @@ For dynaminds with 50+ focuses, create relationship matrices:
 
 ## Upgrading
 
-To get the latest dynamind rules and templates:
+Your content (`memory-bank/` and `focus-areas/`) is completely separate from dynamind scaffolding, so upgrades are safe and straightforward.
 
-1. **Backup your content:**
-   ```bash
-   # Your memory-bank/ and focus-areas/ are safe
-   # But backup just in case
-   cp -r memory-bank memory-bank.backup
-   cp -r focus-areas focus-areas.backup
-   ```
+### If You Used Simple Clone
 
-2. **Pull or download updates:**
-   ```bash
-   git pull origin main
-   # Or re-download and replace .clinerules/ directory
-   ```
+```bash
+# Navigate to dynamind scaffolding
+cd .clinerules/dynamind
 
-3. **Verify:**
-   - Latest `.clinerules/dynamind.md` and templates are updated
-   - Your `memory-bank/` and `focus-areas/` remain unchanged
-   - Ask Cline: "What version of dynamind rules are you using?"
+# Pull latest updates
+git pull origin main
+
+# Return to your dynamind root
+cd ../..
+```
+
+### If You Used Git Submodule
+
+```bash
+# Update the submodule to latest version
+git submodule update --remote .clinerules/dynamind
+
+# Commit the update
+git add .clinerules/dynamind
+git commit -m "Update dynamind scaffolding to latest version"
+```
+
+### Verify the Update
+
+```bash
+# Check which version you're now using
+cd .clinerules/dynamind
+git log -1 --oneline
+cd ../..
+
+# Or ask Cline directly
+# In Cline: "What version of dynamind rules are you using?"
+```
+
+**Your content is safe:**
+- `memory-bank/` — Never touched by upgrades
+- `focus-areas/` — Never touched by upgrades
+- Only `.clinerules/dynamind/` is updated
 
 ---
 
