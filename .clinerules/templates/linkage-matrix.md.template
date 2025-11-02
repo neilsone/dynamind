@@ -1,0 +1,14 @@
+# Linkage Matrix Overview
+
+System/Area Relationships:
+- TODO: Describe the purpose of this matrix (e.g., dependencies, data flows, logical or physical grouping).
+
+| Source Service/Area | Relationship Type | Target Service/Area | Notes/Links |
+|---------------------|------------------|---------------------|-------------|
+| TODO                | TODO             | TODO                | TODO        |
+
+Instructions:
+- Extend this table with all relevant cross-service or cross-area relationships.
+- Use "Relationship Type" for dependency, data flow, co-location, grouping, etc.
+- Add more columns as needed for architectural, regional, or compliance overviews.
+- Mark incomplete or uncertain relationships with a TODO for later clarification.

@@ -1,0 +1,13 @@
+# Interface
+
+External Interfaces:
+- TODO: List and describe all interfaces exposed by this service to other systems, products, or services.
+
+Internal Interfaces:
+- TODO: Describe any significant internal APIs or modules meant for use within the organization.
+
+Behavior:
+- TODO: Specify interface contracts, usage expectations, and side effects.
+
+Versioning:
+- TODO: Document interface versioning policy and compatibility commitments.
