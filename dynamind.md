@@ -48,6 +48,7 @@ memory-bank/                    # Core documentation
 
 focus-areas/                   # Domain-specific organization
   [focus-area]/                # e.g., "research", "platforms", "learning"
+    OVERVIEW.md                # Recommended: focus area overview
     focus-sections/
       [focus-section]/         # Specific focus topic
         OVERVIEW.md           # Required: summary, owner, links
@@ -72,20 +73,28 @@ focus-areas/                   # Domain-specific organization
 **Steps:**
 1. Validate focus-area and focus-section names
 2. Create: `focus-areas/[focus-area]/focus-sections/[focus-section]/`
-3. Scaffold `OVERVIEW.md` from template (required)
-4. Update `memory-bank/focus-index.md`
-5. Optionally scaffold additional files: `CLINE.md`, `architecture.md`, `status.md`, etc.
+3. If focus-area is new, scaffold `focus-areas/[focus-area]/OVERVIEW.md` from focus-area template (recommended)
+4. Scaffold focus `OVERVIEW.md` from template (required)
+5. Update `memory-bank/focus-index.md`
+6. Optionally scaffold additional files: `CLINE.md`, `architecture.md`, `status.md`, etc.
 
 **Available Templates:**
-- `OVERVIEW.md.template` — Summary, canonical repo, ownership, patterns
-- `CLINE.md.template` — Navigation guide
-- `architecture.md`, `status.md`, `endpoints.md`, `team.md`, `interface.md`, `compliance-checklist.md`
+
+Focus-Area Level:
+- `focus-area/OVERVIEW.md.template` — Focus area overview, purpose, goals, connections
+- `focus-area/CLINE.md.template` — Navigation guide for area
+
+Focus Level:
+- `focus/OVERVIEW.md.template` — Summary, canonical repo, ownership, patterns
+- `focus/CLINE.md.template` — Navigation guide
+- `focus/architecture.md`, `status.md`, `endpoints.md`, `team.md`, `interface.md`, `compliance-checklist.md`
 - `linkage-matrix.md.template` — Cross-focus relationships
 
 **Template Philosophy:**
 - All include TODO sections for customization
 - Use minimally — only create what's needed
 - Adapt to context, don't force rigid structures
+- Focus-area OVERVIEW.md is recommended but not required
 
 ---
 

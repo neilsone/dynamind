@@ -109,6 +109,7 @@ Initialize the dynamind memory bank for [your domain]
 - `memory-bank/` with 6 core documentation files
 - `memory-bank/focus-index.md` to track focuses
 - Initial structure adapted to your domain
+- Focus-area OVERVIEW.md files for organization (when creating first focus in an area)
 
 ### 5. Create Your First Focus
 
@@ -123,6 +124,7 @@ Create a focus called [topic] in the [area] focus area
 
 **What Cline Does:**
 - Validates naming (lowercase, hyphens, underscores only)
+- Creates `focus-areas/[area]/OVERVIEW.md` (if new focus area)
 - Creates `focus-areas/[area]/focus-sections/[topic]/OVERVIEW.md`
 - Adds TODOs for customization
 - Updates the focus index
@@ -255,6 +257,8 @@ Cline operates in two modes:
       status.md.template
       [more templates...]
     focus-area/                 # Focus-area templates
+      OVERVIEW.md.template      # Focus area overview
+      CLINE.md.template         # Navigation guide
     dynamind/                   # Dynamind-level templates
     linkage-matrix.md.template
 
@@ -269,6 +273,7 @@ memory-bank/                    # Core documentation (created by Cline)
 
 focus-areas/                   # Your domain-specific organization
   [focus-area]/                # e.g., "research", "development"
+    OVERVIEW.md                # Recommended: focus area overview
     focus-sections/
       [focus-section]/         # Specific focus topic
         OVERVIEW.md           # Required: summary, owner, links
