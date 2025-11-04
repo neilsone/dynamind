@@ -34,14 +34,65 @@ This navigation guide orients dynamind architects and leads within the memory ba
 
 ---
 
+## 🧠 Context Hydration Policy
+
+### Mandatory Context Hydration at Task Start
+
+**CRITICAL REQUIREMENT:** Every new task MUST begin with context hydration from the memory bank before any other activity. This is non-negotiable and ensures continuity across conversation resets.
+
+### Required Reading at Task Initialization
+
+At the start of each new task, you MUST read the following files in order:
+
+1. **`dynamindContext.md`** - System vision, architecture, and current state
+2. **`dynamindProgress.md`** - Current progress, milestones, and next steps
+3. **`memory-bank/focus-index.md`** - Authoritative focus/focus area registry
+4. **Relevant focus/focus area OVERVIEW.md files** - Based on task scope
+
+### Context Hydration Workflow
+
+```mermaid
+flowchart TD
+    Start[New Task Starts] --> Hydrate[Context Hydration Required]
+    Hydrate --> Read1[Read dynamindContext.md]
+    Read1 --> Read2[Read dynamindProgress.md]
+    Read2 --> Read3[Read focus-index.md]
+    Read3 --> Read4{Task-Specific Files?}
+    Read4 -->|Yes| Read5[Read Relevant OVERVIEW.md]
+    Read4 -->|No| Complete[Context Hydration Complete]
+    Read5 --> Complete
+    Complete --> Proceed[Proceed with Task]
+```
+
+### Why Context Hydration is Critical
+
+- **Memory Reset Recovery**: After conversation resets, the memory bank is the ONLY link to previous work
+- **Consistency**: Ensures all decisions align with established patterns and progress
+- **Efficiency**: Prevents duplicating work or making conflicting decisions
+- **Quality**: Maintains accuracy and coherence across the entire system
+
+### Failure to Hydrate Context
+
+Skipping context hydration will result in:
+- Misaligned decisions with system architecture
+- Duplicate or conflicting implementations
+- Loss of critical progress information
+- Inability to maintain system coherence
+
+---
+
 ## 🚦 Core Workflows and Memory Bank Update Policy
 
 ### Plan Mode
 
 ```mermaid
 flowchart TD
-    Start[Start] --> ReadFiles[Read Memory Bank]
-    ReadFiles --> CheckFiles{Files Complete?}
+    Start[Start New Task] --> Hydrate[Context Hydration Required]
+    Hydrate --> Read1[Read dynamindContext.md]
+    Read1 --> Read2[Read dynamindProgress.md]
+    Read2 --> Read3[Read focus-index.md]
+    Read3 --> ReadTask[Read Task-Specific Files]
+    ReadTask --> CheckFiles{Context Complete?}
 
     CheckFiles -->|No| Plan[Create Plan]
     Plan --> Document[Document in Chat]
@@ -55,8 +106,12 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    Start[Start] --> Context[Check Memory Bank]
-    Context --> Update[Update Documentation]
+    Start[Start New Task] --> Hydrate[Context Hydration Required]
+    Hydrate --> Read1[Read dynamindContext.md]
+    Read1 --> Read2[Read dynamindProgress.md]
+    Read2 --> Read3[Read focus-index.md]
+    Read3 --> ReadTask[Read Task-Specific Files]
+    ReadTask --> Update[Update Documentation if Needed]
     Update --> Execute[Execute Task]
     Execute --> Document[Document Changes]
 ```
