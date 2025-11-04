@@ -1,16 +1,36 @@
-# OVERVIEW
+# {{FOCUS_NAME}}
 
-Summary:
-- TODO: Provide a concise summary of this service (purpose, scope, key responsibilities).
+## Summary
 
-Canonical Repository:
-- TODO: Add repository URL.
+Brief description of what this focus is about and why it exists.
 
-Ownership:
-- TODO: List owning team(s) and primary contacts.
+## Current State
 
-Platform Patterns:
-- TODO: Reference any relevant platform-wide standards/patterns.
+What's happening right now with this focus. Current phase, recent updates, or active direction.
 
-Links:
-- TODO: Include diagrams, docs, dashboards as needed.
+## Goals
+
+What you're working toward:
+- [ ] Goal 1
+- [ ] Goal 2
+- [ ] Goal 3
+
+## Key Information
+
+Important details, decisions, or context specific to this focus:
+- **Important thing**: Description
+- **Another key point**: Description
+
+## Resources
+
+Helpful links, docs, repos, or references:
+- [Link name](url) - Description
+- [Link name](url) - Description
+
+## Notes
+
+Additional context, lessons learned, or things to remember.
+
+---
+
+*Last updated: {{DATE}}*

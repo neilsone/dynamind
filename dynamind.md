@@ -34,6 +34,64 @@ flowchart TD
 
 ---
 
+## 🧠 Context Hydration Policy
+
+### MANDATORY: Read Memory Bank at Task Start
+
+**CRITICAL REQUIREMENT:** Every new task MUST begin with context hydration from the memory bank before any other activity. This is non-negotiable and ensures continuity across conversation resets.
+
+### Required Reading at Task Initialization
+
+At the start of EVERY task, you MUST read these files in order:
+
+1. **`memory-bank/dynamindBrief.md`** - Requirements, goals, scope
+2. **`memory-bank/dynamindContext.md`** - Rationale, problems solved, vision
+3. **`memory-bank/dynamindPatterns.md`** - Architecture patterns, critical paths
+4. **`memory-bank/techContext.md`** - Technologies, dependencies, constraints
+5. **`memory-bank/dynamindActiveContext.md`** - Current state, focus, decisions
+6. **`memory-bank/dynamindProgress.md`** - Status log, what works, known issues
+7. **`memory-bank/focus-index.md`** - Registry of all focuses
+8. **Relevant focus OVERVIEW.md files** - Based on task scope
+
+### Context Hydration Workflow
+
+```mermaid
+flowchart TD
+    Start[New Task Starts] --> Hydrate[Context Hydration REQUIRED]
+    Hydrate --> Read1[Read dynamindBrief.md]
+    Read1 --> Read2[Read dynamindContext.md]
+    Read2 --> Read3[Read dynamindPatterns.md]
+    Read3 --> Read4[Read techContext.md]
+    Read4 --> Read5[Read dynamindActiveContext.md]
+    Read5 --> Read6[Read dynamindProgress.md]
+    Read6 --> Read7[Read focus-index.md]
+    Read7 --> Read8{Task-Specific Focus?}
+    Read8 -->|Yes| Read9[Read Focus OVERVIEW.md]
+    Read8 -->|No| Complete[Context Hydration Complete]
+    Read9 --> Complete
+    Complete --> Proceed[Proceed with Task]
+```
+
+### Why Context Hydration is Critical
+
+- **Memory Reset Recovery**: After conversation resets, the memory bank is the ONLY link to previous work
+- **Consistency**: Ensures all decisions align with established patterns and progress
+- **Efficiency**: Prevents duplicating work or making conflicting decisions
+- **Quality**: Maintains accuracy and coherence across the entire system
+
+### Consequences of Skipping Context Hydration
+
+Failure to read the memory bank at task start will result in:
+- Misaligned decisions with system architecture
+- Duplicate or conflicting implementations
+- Loss of critical progress information
+- Inability to maintain system coherence
+- Breaking continuity across conversation resets
+
+**Remember:** After every memory reset, the dynamind is your only link to previous work. Its precision and clarity are critical; all effectiveness depends on its accuracy.
+
+---
+
 ## Directory Architecture
 
 ```
@@ -51,9 +109,8 @@ focus-areas/                   # Domain-specific organization
     OVERVIEW.md                # Recommended: focus area overview
     focus-sections/
       [focus-section]/         # Specific focus topic
-        OVERVIEW.md           # Required: summary, owner, links
-        CLINE.md             # Optional: navigation guide
-        *.md                 # Optional: architecture, status, etc.
+        OVERVIEW.md           # Required: focus summary and context
+        *.md                 # Optional: additional files as needed
 ```
 
 **Separation of Concerns:**
@@ -73,28 +130,20 @@ focus-areas/                   # Domain-specific organization
 **Steps:**
 1. Validate focus-area and focus-section names
 2. Create: `focus-areas/[focus-area]/focus-sections/[focus-section]/`
-3. If focus-area is new, scaffold `focus-areas/[focus-area]/OVERVIEW.md` from focus-area template (recommended)
+3. If focus-area is new, scaffold `focus-areas/[focus-area]/OVERVIEW.md` from template (recommended)
 4. Scaffold focus `OVERVIEW.md` from template (required)
 5. Update `memory-bank/focus-index.md`
-6. Optionally scaffold additional files: `CLINE.md`, `architecture.md`, `status.md`, etc.
 
 **Available Templates:**
-
-Focus-Area Level:
-- `focus-area/OVERVIEW.md.template` — Focus area overview, purpose, goals, connections
-- `focus-area/CLINE.md.template` — Navigation guide for area
-
-Focus Level:
-- `focus/OVERVIEW.md.template` — Summary, canonical repo, ownership, patterns
-- `focus/CLINE.md.template` — Navigation guide
-- `focus/architecture.md`, `status.md`, `endpoints.md`, `team.md`, `interface.md`, `compliance-checklist.md`
-- `linkage-matrix.md.template` — Cross-focus relationships
+- `focus/OVERVIEW.md.template` — Minimal focus overview with summary, goals, resources
+- `focus-area/OVERVIEW.md.template` — Focus area overview with purpose and patterns
+- `linkage-matrix.md.template` — Optional: Cross-focus relationships for complex dynaminds
 
 **Template Philosophy:**
-- All include TODO sections for customization
-- Use minimally — only create what's needed
-- Adapt to context, don't force rigid structures
+- Keep it minimal — only the OVERVIEW.md is required
+- Templates provide structure but should be adapted to your needs
 - Focus-area OVERVIEW.md is recommended but not required
+- Add additional files (.md) as needed for your specific context
 
 ---
 
@@ -102,15 +151,14 @@ Focus Level:
 
 ### Opening a Focus
 1. Navigate to: `focus-areas/[focus-area]/focus-sections/[focus-section]/`
-2. Read `CLINE.md` first (if present)
-3. Read `OVERVIEW.md` for context
-4. Read additional files as needed
-5. Reference `memory-bank/dynamindPatterns.md` for shared patterns
+2. Read `OVERVIEW.md` for context
+3. Read additional files as needed (if present)
+4. Reference `memory-bank/dynamindPatterns.md` for shared patterns
 
 ### Switching Focuses
-1. Finalize TODOs in current focus
+1. Finalize work in current focus
 2. Navigate to new focus
-3. Read `CLINE.md` (if present) and `OVERVIEW.md`
+3. Read `OVERVIEW.md`
 4. Maintain continuity with memory-bank patterns
 
 ### Listing Focuses
@@ -158,23 +206,22 @@ Suggest creation whenever relationships are being lost in the hierarchy.
 |-----------|--------|
 | "Create focus X in area Y" | Validate names, scaffold OVERVIEW.md, update focus-index.md |
 | "List all focuses" | Show focuses grouped by area from focus-index.md |
-| "Open focus X" | Navigate, read CLINE.md then OVERVIEW.md |
-| "Update context for X" | Update focus files and relevant matrices |
+| "Open focus X" | Navigate to focus, read OVERVIEW.md |
+| "Update context for X" | Update focus OVERVIEW.md and relevant memory bank files |
 | "Create dependency matrix for Y" | Scaffold linkage-matrix.md at focus-area level |
-| "What's the status of X?" | Read status.md, OVERVIEW.md, check dynamindProgress.md |
+| "What's the status of X?" | Read OVERVIEW.md, check dynamindProgress.md |
 
 ---
 
 ## Guidelines
 
-1. **Read CLINE.md first** when entering any focus (if present)
-2. **Keep files updated** — they're the source of truth
-3. **Extract patterns** — suggest when solutions are reusable
-4. **Maintain independence** — focuses should be self-contained
-5. **Be conversational** — don't announce "using dynamind system"
-6. **Use templates as guides** — adapt to context
-7. **Link liberally** — cross-reference patterns, diagrams, external docs
-8. **Unidirectional exports** — Content outside memory-bank/ doesn't link back
+1. **Keep files updated** — they're the source of truth
+2. **Extract patterns** — suggest when solutions are reusable
+3. **Maintain independence** — focuses should be self-contained
+4. **Be conversational** — don't announce "using dynamind system"
+5. **Use templates as guides** — adapt to context
+6. **Link liberally** — cross-reference patterns, diagrams, external docs
+7. **Unidirectional exports** — Content outside memory-bank/ doesn't link back
 
 ---
 
