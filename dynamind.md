@@ -51,7 +51,7 @@ At the start of EVERY task, you MUST read these files in order:
 5. **`memory-bank/dynamindActiveContext.md`** - Current state, focus, decisions
 6. **`memory-bank/dynamindProgress.md`** - Status log, what works, known issues
 7. **`memory-bank/focus-index.md`** - Registry of all focuses
-8. **Relevant focus OVERVIEW.md files** - Based on task scope
+8. **Relevant focus README.md files** - Based on task scope
 
 ### Context Hydration Workflow
 
@@ -66,7 +66,7 @@ flowchart TD
     Read5 --> Read6[Read dynamindProgress.md]
     Read6 --> Read7[Read focus-index.md]
     Read7 --> Read8{Task-Specific Focus?}
-    Read8 -->|Yes| Read9[Read Focus OVERVIEW.md]
+    Read8 -->|Yes| Read9[Read Focus README.md]
     Read8 -->|No| Complete[Context Hydration Complete]
     Read9 --> Complete
     Complete --> Proceed[Proceed with Task]
@@ -106,10 +106,10 @@ memory-bank/                    # Core documentation
 
 focus-areas/                   # Domain-specific organization
   [focus-area]/                # e.g., "research", "platforms", "learning"
-    OVERVIEW.md                # Recommended: focus area overview
+    README.md                  # Recommended: focus area overview
     focus-sections/
       [focus-section]/         # Specific focus topic
-        OVERVIEW.md           # Required: focus summary and context
+        README.md             # Required: focus summary and context
         *.md                 # Optional: additional files as needed
 ```
 
@@ -130,19 +130,19 @@ focus-areas/                   # Domain-specific organization
 **Steps:**
 1. Validate focus-area and focus-section names
 2. Create: `focus-areas/[focus-area]/focus-sections/[focus-section]/`
-3. If focus-area is new, scaffold `focus-areas/[focus-area]/OVERVIEW.md` from template (recommended)
-4. Scaffold focus `OVERVIEW.md` from template (required)
+3. If focus-area is new, scaffold `focus-areas/[focus-area]/README.md` from template (recommended)
+4. Scaffold focus `README.md` from template (required)
 5. Update `memory-bank/focus-index.md`
 
 **Available Templates:**
-- `focus/OVERVIEW.md.template` — Minimal focus overview with summary, goals, resources
-- `focus-area/OVERVIEW.md.template` — Focus area overview with purpose and patterns
+- `focus/README.md.template` — Minimal focus overview with summary, goals, resources
+- `focus-area/README.md.template` — Focus area overview with purpose and patterns
 - `linkage-matrix.md.template` — Optional: Cross-focus relationships for complex dynaminds
 
 **Template Philosophy:**
-- Keep it minimal — only the OVERVIEW.md is required
+- Keep it minimal — only the README.md is required
 - Templates provide structure but should be adapted to your needs
-- Focus-area OVERVIEW.md is recommended but not required
+- Focus-area README.md is recommended but not required
 - Add additional files (.md) as needed for your specific context
 
 ---
@@ -151,21 +151,21 @@ focus-areas/                   # Domain-specific organization
 
 ### Opening a Focus
 1. Navigate to: `focus-areas/[focus-area]/focus-sections/[focus-section]/`
-2. Read `OVERVIEW.md` for context
+2. Read `README.md` for context
 3. Read additional files as needed (if present)
 4. Reference `memory-bank/dynamindPatterns.md` for shared patterns
 
 ### Switching Focuses
 1. Finalize work in current focus
 2. Navigate to new focus
-3. Read `OVERVIEW.md`
+3. Read `README.md`
 4. Maintain continuity with memory-bank patterns
 
 ### Listing Focuses
 When asked "what focuses exist?":
 1. Check `memory-bank/focus-index.md`
 2. Or scan `focus-areas/` structure
-3. Present grouped by focus-area with links to OVERVIEW.md
+3. Present grouped by focus-area with links to README.md
 
 ---
 
@@ -204,12 +204,12 @@ Suggest creation whenever relationships are being lost in the hierarchy.
 
 | User Says | Action |
 |-----------|--------|
-| "Create focus X in area Y" | Validate names, scaffold OVERVIEW.md, update focus-index.md |
+| "Create focus X in area Y" | Validate names, scaffold README.md, update focus-index.md |
 | "List all focuses" | Show focuses grouped by area from focus-index.md |
-| "Open focus X" | Navigate to focus, read OVERVIEW.md |
-| "Update context for X" | Update focus OVERVIEW.md and relevant memory bank files |
+| "Open focus X" | Navigate to focus, read README.md |
+| "Update context for X" | Update focus README.md and relevant memory bank files |
 | "Create dependency matrix for Y" | Scaffold linkage-matrix.md at focus-area level |
-| "What's the status of X?" | Read OVERVIEW.md, check dynamindProgress.md |
+| "What's the status of X?" | Read README.md, check dynamindProgress.md |
 
 ---
 
